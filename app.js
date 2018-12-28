@@ -27,17 +27,27 @@ const config = {
         publish: false,
         secret: 'nodemedia2017privatekey'
     },
+    tarns: {
+        ffmpeg: "/home/work/github/nms/Node-Media-Server/ffmpeg",
+        tasks: [{
+            app: "aa",
+            hls: true,
+            hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+            dash: true,
+            dashFlag: '[f=dash:window_size=3:extra_window_size=5]'
+        }]
+    },
 };
 
 
-let nms = new NodeMediaServer(config)
-    nms.run();
+let nms = new NodeMediaServer(config);
+nms.run();
 
-    nms.on('preConnect', (id, args) => {
-        console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
-        // let session = nms.getSession(id);
-        // session.reject();
-    });
+nms.on('preConnect', (id, args) => {
+    console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
+    // let session = nms.getSession(id);
+    // session.reject();
+});
 
 nms.on('postConnect', (id, args) => {
     console.log('[NodeEvent on postConnect]', `id=${id} args=${JSON.stringify(args)}`);
