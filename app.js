@@ -27,10 +27,10 @@ const config = {
         publish: false,
         secret: 'nodemedia2017privatekey'
     },
-    tarns: {
-        ffmpeg: "/home/work/github/nms/Node-Media-Server/ffmpeg",
+    trans: {
+        ffmpeg: "/home/work/software/ffmpeg-4.1-64bit-static/ffmpeg",
         tasks: [{
-            app: "aa",
+            app: "live",
             hls: true,
             hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
             dash: true,
